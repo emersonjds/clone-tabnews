@@ -1,3 +1,3 @@
 export default function Home() {
-  return <>Change the future</>;
+  return <>Start project</>
 }
