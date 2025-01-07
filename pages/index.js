@@ -1,3 +1,3 @@
 export default function Home() {
-  return <>Start changes</>;
+  return <>Nao desista, coisas incriveis acontecem quando voce se propoe a estudar e acreditar.</>;
 }
