@@ -1,3 +1,7 @@
 export default function Home() {
-  return <>Changes</>;
+  return (
+    <>
+      <h1>Home</h1>
+    </>
+  );
 }
