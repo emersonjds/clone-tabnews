@@ -1,3 +1,3 @@
 export default function Home() {
-  return <>Hackathons</>;
+  return <>We hope good days</>;
 }
