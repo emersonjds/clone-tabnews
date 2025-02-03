@@ -5,7 +5,6 @@
   "main": "index.js",
   "scripts": {
     "dev": "next dev",
-    //roda o prettier em todos os arquivos
     "lint:check": "prettier --check ."
   },
   "author": "Emerson Silva",
