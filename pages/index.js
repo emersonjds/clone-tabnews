@@ -1,3 +1,3 @@
 export default function Home() {
-  return <>Changes</>;
+  return <>Continue code</>;
 }
