@@ -1,3 +1,3 @@
 export default function Home() {
-  return <>Improve</>;
+  return <>Change u life</>;
 }
