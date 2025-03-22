@@ -1,3 +1,3 @@
 export default function Home() {
-  return <>Change your life</>;
+  return <>Believe and change</>;
 }
