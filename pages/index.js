@@ -1,12 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { atom, useAtom } from 'jotai';
+
+// Define a Jotai atom for managing the state
+const countAtom = atom(0);
 
 function Home() {
-  // Using useState hook to manage state
-  const [count, setCount] = useState(0);
+  // Use the atom in the component
+  const [count, setCount] = useAtom(countAtom);
 
-  // Example of a function
+  // Example function to increment the count
   const increment = () => {
-    setCount(count + 1); // Updates the state
+    setCount((prev) => prev + 1); // Update state atomically
   };
 
   return (
