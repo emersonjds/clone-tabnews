@@ -1,10 +1,15 @@
 import React from "react";
+import Counter from "../components/Counter";
+import { Provider } from "jotai";
 
 const Home = () => {
   return (
-    <div>
-      <h1>Home Page</h1>
-    </div>
+    <Provider>
+      <div>
+        <h1>Home Page</h1>
+        <Counter />
+      </div>
+    </Provider>
   );
 };
 
