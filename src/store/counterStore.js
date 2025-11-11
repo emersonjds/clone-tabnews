@@ -1,9 +1,8 @@
-import { atom } from 'jotai';
+// Store for handling counter state
 
-export const counterAtom = atom(0);
-export const incrementAtom = atom(null, (get, set) => {
-  set(counterAtom, get(counterAtom) + 1);
-});
-export const decrementAtom = atom(null, (get, set) => {
-  set(counterAtom, get(counterAtom) - 1);
-});
+// Define a simple counter state
+export const counterState = {
+  count: 0,
+  increment: () => counterState.count++,
+  decrement: () => counterState.count--,
+};
