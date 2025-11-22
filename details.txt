@@ -1,3 +1,6 @@
 When we use rc on a file, it creates a backup of the file and adjust version of "run commands"
 
 It's used for versioning and help with rollbacks.
+
+With a create of a .nvmrc when starts the projects it's possible to use nvm install and the version defined on the file
+it's used.
