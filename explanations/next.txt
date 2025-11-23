@@ -1,0 +1,5 @@
+Next js using o file base routing
+
+* Roteamento baseado em arquivo
+
+A partir do 13 -> app directory para adicionar todas as rotas
