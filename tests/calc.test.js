@@ -1,13 +1,6 @@
-test("test", callbackFunction);
+const calc = require("../models/calc");
 
-function callbackFunction() {
-  console.log('executado 1')
-}
-
-test("testando outra funcao", () => {
-  console.log('executado 2');
-})
-
-test("One should be one", ()=> {
-  expect(1).toBe(1)
+test("sum 2 + 2 should be 4 ", ()=> {
+  const result = calc.sum(2,2);
+  expect(result).toBe(4);
 })
