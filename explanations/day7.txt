@@ -1,0 +1,3 @@
+CI CD
+
+Vercel for deploy and manager platform and undertand how it works

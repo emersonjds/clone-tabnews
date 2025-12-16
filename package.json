@@ -4,7 +4,12 @@
   "description": "clone-tabnews",
   "main": "index.js",
   "scripts": {
-    "dev": "next dev"
+    "dev": "next dev",
+    "lint:check": "prettier --check .",
+    "lint:fix": "prettier --write .",
+    "build": "next build",
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "keywords": [
     "tabnews",
@@ -16,5 +21,9 @@
     "next": "^13.1.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "jest": "^30.2.0",
+    "prettier": "^3.7.4"
   }
 }
