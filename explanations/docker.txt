@@ -37,4 +37,8 @@ We can list all process on docker with
 
 docker ps -a, we need to be attention on exited codes show by logs on docker, cause this we can manipulate unit test depending of type these codes
 
+docker logs, bring informations about all off occour inside of the container
+
+docker compose up --detached or -d, brings the possibilite of run this process on background 
+
 
