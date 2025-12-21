@@ -31,4 +31,10 @@ That dockerfile creates a binary image and the image runs on Container, besides 
 
 When we create that type of files "dockerfiles" we can up this for a repository image, the famous "Docker Hub" where all people can get this image and using in their projects
 
+---
+
+We can list all process on docker with
+
+docker ps -a, we need to be attention on exited codes show by logs on docker, cause this we can manipulate unit test depending of type these codes
+
 
