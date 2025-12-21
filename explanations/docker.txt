@@ -1,0 +1,34 @@
+Docker - Container Engine
+
+Compose - Permissions from commands on containers or up or down images containers
+
+For patterns of docker we need to create a file on source of projec with the name "compose.yaml"
+
+YAML - Ain't Markup Language, a file specific for create data and configurations of system or projects
+
+The hierachy of configurations works like python using identation and white spaces for separate responsabilities
+
+In compose we need specify our configurations like this
+
+services:
+  database:
+    ... version of database
+  mailcatcher:
+    ... version of service of e-mail
+
+All of this configurations returns of a docker image on Docker Hub or a `dockerfile`
+
+All starts with a docker file where all commands to up that images was created 
+
+Example of dockerfile
+
+FROM ubuntu:22.4
+COPY . /app
+RUN make /app
+CMD python /app/app.py
+
+That dockerfile creates a binary image and the image runs on Container, besides that on our job we connect in these containers
+
+When we create that type of files "dockerfiles" we can up this for a repository image, the famous "Docker Hub" where all people can get this image and using in their projects
+
+
