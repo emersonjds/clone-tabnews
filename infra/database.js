@@ -1,1 +1,6 @@
-export default 'mongodb://localhost:27017/test'
+export class Database {
+  constructor(connectionString) {
+    this.connectionString = connectionString;
+    this.connected = false;
+  }
+}
