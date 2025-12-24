@@ -41,4 +41,6 @@ docker logs, bring informations about all off occour inside of the container
 
 docker compose up --detached or -d, brings the possibilite of run this process on background 
 
+If we can to connect on instance inside de container it's necessary using a tool like psql or another, with this we connect the external world with inside world on container. it's magic
+
 
