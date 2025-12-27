@@ -8,3 +8,6 @@ out/
 # Logs e arquivos de sistema
 *.log
 .DS_Store
+
+#Ide
+.idea
