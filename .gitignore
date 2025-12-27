@@ -1,4 +1,8 @@
-.next
-node_modules
-.idea
+node_modules/
+.next/
+out/
+build/
+.idea/
+.DS_Store
+*.log
 

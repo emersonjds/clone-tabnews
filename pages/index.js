@@ -1,5 +1,5 @@
 function Home() {
-  return <h1>Changes</h1>;
+  return <h1>Dont Stop, continue and finish</h1>;
 }
 
 export default Home;
