@@ -1,4 +1,10 @@
-.next
-node_modules
-.idea
+# Dependências
+node_modules/
 
+# Next.js (arquivos de build e cache)
+.next/
+out/
+
+# Logs e arquivos de sistema
+*.log
+.DS_Store
