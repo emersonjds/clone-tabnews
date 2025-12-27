@@ -5,13 +5,22 @@ async function query(queryObject) {
   const client = new Client({
     host: 'localhost',
     port: 5432,
-    database: 'postgres',
     user: 'postgres',
+    database: 'postgres',
     password: '123456',
   }); // instance of client for use on connection
+
   await client.connect(); // connect on db
-  const result = await client.query(queryObject);
-  await client.end(); // close connection
+
+  try {
+    const result = await client.query(queryObject);
+    return result;
+  } catch (e) {
+    console.log('Database query error:', e);
+  } finally {
+    await client.end();
+  }
+
 }
 
 export default {
