@@ -9,7 +9,7 @@
     "lint:fix": "prettier --write .",
     "build": "next build",
     "test": "NODE_OPTIONS=--experimental-vm-modules jest",
-    "test:watch": "jest --watchAll"
+    "test:watch": "NODE_OPTIONS=--experimental-vm-modules jest --watchAll"
   },
   "keywords": [
     "tabnews",
@@ -24,6 +24,7 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
+    "dotenv": "^17.2.3",
     "jest": "^30.2.0",
     "prettier": "^3.7.4"
   }
