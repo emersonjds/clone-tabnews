@@ -12,6 +12,8 @@ async function query(queryObject) {
 
   await client.connect(); // connect on db
 
+  console.log('Executing query:', queryObject);
+
   try {
     let result;
     result = await client.query(queryObject);
