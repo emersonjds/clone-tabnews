@@ -23,9 +23,9 @@ async function status(request, response) {
 
     response.status(200).json({
       updated_at: updatedAt,
-      version_pg: '',
-      max_connections: '',
-      used_connections: '',
+      version_pg: dbVersion.rows[0].version,
+      max_connections: Number(maxConnectionsResult.rows[0].max_connections),
+      used_connections: Number(usedConnections.rows[0].count),
     });
 
   } catch (e) {
