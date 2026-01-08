@@ -14,7 +14,7 @@ test("Should return status 200 on GET /api/v1/status", async () => {
   // const maxConnections = responseBody.max_connections;
   // const usedConnections = responseBody.used_connections;
 
-  expect(typeof responseBody.version_pg).toBe("string");
+  expect(responseBody.version_pg).toBe("16.0");
   expect(responseBody.max_connections).toBeGreaterThan(1);
   expect(responseBody.used_connections).toBeGreaterThanOrEqual(1);
 
