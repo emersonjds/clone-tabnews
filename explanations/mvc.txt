@@ -1,0 +1,4 @@
+In MVC this is the flow
+
+Controller -> Model -> Controller -> View 
+
