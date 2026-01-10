@@ -6,7 +6,7 @@ async function status(request, response) {
   const updatedAt = new Date().toISOString();
 
   const dbVersion = await database.query("SELECT version() AS version_postgres;");
-  // its possible to use SHOW too
+  // its possible to use SHOW server_version; as well
   const maxConnectionsResult = await database.query("SHOW max_connections;");
   const usedConnections = await database.query("SELECT COUNT(*) FROM pg_stat_activity;");
 
