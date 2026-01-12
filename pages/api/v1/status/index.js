@@ -13,9 +13,9 @@ async function status(request, response) {
   const getConnections = await database.query("SELECT * FROM pg_stat_activity WHERE datname='postgres';");
   console.log('Current connections to local_db:', getConnections.rows);
 
-  // console.log('Database version:', dbVersion.rows[0].version_postgres.split(" ")[1]);
-  // console.log('Database max connections', maxConnectionsResult.rows[0].max_connections);
-  // console.log('Database usedConnections', usedConnections.rows[0].count)
+  console.log('Database version:', dbVersion.rows[0].version_postgres.split(" ")[1]);
+  console.log('Database max connections', maxConnectionsResult.rows[0].max_connections);
+  console.log('Database usedConnections', usedConnections.rows[0].count)
 
   response.status(200).json({
     updated_at: updatedAt,
