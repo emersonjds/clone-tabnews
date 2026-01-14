@@ -1,0 +1,7 @@
+We need to talk about parametrization queries.
+
+This occurs when we have a query that depends on a parameter.
+
+For example:
+
+SELECT * FROM table WHERE id = ?
