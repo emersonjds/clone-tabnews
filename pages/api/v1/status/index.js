@@ -8,7 +8,8 @@ async function status(request, response) {
   const maxConnectionsResult = await database.query("SHOW max_connections;");
   const usedConnections = await database.query("SELECT COUNT(*)::int FROM pg_stat_activity;");
 
-  const getConnections = await database.query("SELECT * FROM pg_stat_activity WHERE datname='postgres';");
+  const dbName = 'local_db'
+  const getConnections = await database.query(`SELECT * FROM pg_stat_activity WHERE datname='${dbName}';`);
   console.log('Current connections to local_db:', getConnections.rows);
 
   console.log('Database version:', dbVersion.rows[0].version_postgres.split(" ")[1]);
