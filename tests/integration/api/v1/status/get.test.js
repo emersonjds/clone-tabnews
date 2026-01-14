@@ -16,3 +16,10 @@ test("Should return status 200 on GET /api/v1/status", async () => {
 
 });
 
+test("Test of SQL Injection", async () => {
+  const response = await fetch("http://localhost:3000/api/v1/status?dbName=postgres");
+});
+
+
+
+
