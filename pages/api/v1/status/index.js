@@ -24,6 +24,12 @@ async function status(request, response) {
   //third situation
   // "SELECT count(*)::int FROM pg_stat_activity WHERE datname = '';';"
 
+  //four situation
+  // "SELECT count(*)::int FROM pg_stat_activity WHERE datname = '';SELECT pg_sleep(4);';"
+
+  //Fifth situation
+  // "SELECT count(*)::int FROM pg_stat_activity WHERE datname = '';SELECT pg_sleep(4);--;"`
+
   response.status(200).json({
     updated_at: updatedAt,
     version_pg: dbVersion.rows[0].version_postgres.split(" ")[1],

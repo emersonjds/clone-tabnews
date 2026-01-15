@@ -5,3 +5,21 @@ This occurs when we have a query that depends on a parameter.
 For example:
 
 SELECT * FROM table WHERE id = ?
+
+Simulate SQL Injections
+
+// const getConnections = await database.query("SELECT * FROM" + " pg_stat_activity WHERE datname='postgres';");
+
+  //second situation
+  // "SELECT count(*)::int FROM pg_stat_activity WHERE datname = '';"
+
+  //third situation
+  // "SELECT count(*)::int FROM pg_stat_activity WHERE datname = '';';"
+
+  //four situation
+  // "SELECT count(*)::int FROM pg_stat_activity WHERE datname = '';SELECT pg_sleep(4);';"
+
+  //Fifth situation
+  // "SELECT count(*)::int FROM pg_stat_activity WHERE datname = '';SELECT pg_sleep(4);--;"`
+
+  All of this examples using query parameters against the database.
