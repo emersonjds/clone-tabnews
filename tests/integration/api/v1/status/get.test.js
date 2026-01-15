@@ -15,15 +15,6 @@ test("Should return status 200 on GET /api/v1/status", async () => {
   expect(responseBody.used_connections).toBeGreaterThanOrEqual(1);
 });
 
-test("Test of SQL Injection", async () => {
-  await fetch("http://localhost:3000/api/v1/status?dbName=postgres");
-  await fetch("http://localhost:3000/api/v1/status?dbName=");
-  await fetch("http://localhost:3000/api/v1/status?dbName='; ");
-  await fetch("http://localhost:3000/api/v1/status?dbName='; SELECT pg_sleep(4);");
-  // ignore other commands --
-  await fetch("http://localhost:3000/api/v1/status?dbName='; SELECT pg_sleep(4);--");
-});
-
 
 
 
