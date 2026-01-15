@@ -12,8 +12,11 @@ async function status(request, response) {
   //Access data on query params
   const dbNameByQuery = request.query.dbName;
   // console.log(`Database name ${dbNameByQuery}`);
-  // const getConnections = await database.query(`SELECT * FROM pg_stat_activity WHERE datname='${dbName}';`);
-  const getConnections = await database.query("SELECT * FROM" + " pg_stat_activity WHERE datname='postgres';");
+  const getConnections = await database.query(`SELECT *
+                                               FROM pg_stat_activity
+                                               WHERE datname = '${dbName}';`);
+  
+  // const getConnections = await database.query("SELECT * FROM" + " pg_stat_activity WHERE datname='postgres';");
   // console.log('Current connections to local_db:', getConnections.rows);
 
   // console.log('Database version:', dbVersion.rows[0].version_postgres.split(" ")[1]);
