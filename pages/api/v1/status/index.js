@@ -12,7 +12,7 @@ async function status(request, response) {
 
   // Sanitization Query
   const getConnections = await database.query({
-    text: "SELECT COUNT(*) ::int FROM pg_stat_activity WHERE datname =" + " $1",
+    text: "SELECT COUNT(*)::int FROM pg_stat_activity WHERE datname =" + " $1",
     values: [dbName]
   });
 
