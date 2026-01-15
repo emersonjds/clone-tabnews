@@ -12,16 +12,17 @@ async function status(request, response) {
   //Access data on query params
   const dbNameByQuery = request.query.dbName;
   // console.log(`Database name ${dbNameByQuery}`);
-  const getConnections = await database.query(`SELECT *
+  const getConnections = await database.query(`SELECT count(*) ::int
                                                FROM pg_stat_activity
-                                               WHERE datname = '${dbName}';`);
-  
-  // const getConnections = await database.query("SELECT * FROM" + " pg_stat_activity WHERE datname='postgres';");
-  // console.log('Current connections to local_db:', getConnections.rows);
+                                               WHERE datname = '${dbNameByQuery}';`);
 
-  // console.log('Database version:', dbVersion.rows[0].version_postgres.split(" ")[1]);
-  // console.log('Database max connections', maxConnectionsResult.rows[0].max_connections);
-  // console.log('Database usedConnections', usedConnections.rows[0].count)
+  // const getConnections = await database.query("SELECT * FROM" + " pg_stat_activity WHERE datname='postgres';");
+
+  //second situation
+  // "SELECT count(*)::int FROM pg_stat_activity WHERE datname = '';"
+
+  //third situation
+  // "SELECT count(*)::int FROM pg_stat_activity WHERE datname = '';';"
 
   response.status(200).json({
     updated_at: updatedAt,
