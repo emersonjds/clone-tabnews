@@ -19,7 +19,9 @@ test("Test of SQL Injection", async () => {
   await fetch("http://localhost:3000/api/v1/status?dbName=postgres");
   await fetch("http://localhost:3000/api/v1/status?dbName=");
   await fetch("http://localhost:3000/api/v1/status?dbName='; ");
-  await fetch("http://localhost:3000/api/v1/status?dbName='; SELECT pg_sleep(4)");
+  await fetch("http://localhost:3000/api/v1/status?dbName='; SELECT pg_sleep(4);");
+  // ignore other commands --
+  await fetch("http://localhost:3000/api/v1/status?dbName='; SELECT pg_sleep(4);--");
 });
 
 
