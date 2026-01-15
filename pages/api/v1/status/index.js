@@ -19,8 +19,7 @@ async function status(request, response) {
   // console.log('Database version:', dbVersion.rows[0].version_postgres.split(" ")[1]);
   // console.log('Database max connections', maxConnectionsResult.rows[0].max_connections);
   // console.log('Database usedConnections', usedConnections.rows[0].count)
-
-
+  
   response.status(200).json({
     updated_at: updatedAt,
     version_pg: dbVersion.rows[0].version_postgres.split(" ")[1],
