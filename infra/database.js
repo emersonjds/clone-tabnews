@@ -1,4 +1,4 @@
-import { Client } from "pg";
+import {Client} from "pg";
 
 async function query(queryObject) {
   // on instance of Client it's pass the configuration of connection
@@ -10,14 +10,12 @@ async function query(queryObject) {
     password: process.env.POSTGRES_PASSWORD,
   }); // instance of client for use on connection
 
-  await client.connect(); // connect on db
-
   try {
-    let result;
-    result = await client.query(queryObject);
-    return result;
-  } catch (e) {
-    console.log('Database query error:', e);
+    await client.connect(); // connect on db
+    return  await client.query(queryObject);
+  } catch (error) {
+    console.log('Database query error:', error);
+    throw error;
   } finally {
     await client.end();
   }
