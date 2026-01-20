@@ -7,7 +7,7 @@ async function query(queryObject) {
     user: process.env.PRD_USER,
     database: process.env.PRD_DB,
     password: process.env.PRD_PASSWORD,
-    ssl: true
+    ssl: process.env.NODE_ENV !== 'development',
   });
 
   try {
