@@ -8,6 +8,7 @@ async function query(queryObject) {
     user: process.env.PRD_USER,
     database: process.env.PRD_DB,
     password: process.env.PRD_PASSWORD,
+    ssl: true,
   }); // instance of client for use on connection
 
   // console.log('Return of db...',{
