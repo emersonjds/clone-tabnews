@@ -1,4 +1,4 @@
-import { Client } from "pg";
+import {Client} from "pg";
 
 async function query(queryObject) {
   // on instance of Client it's pass the configuration of connection
@@ -8,7 +8,9 @@ async function query(queryObject) {
     user: process.env.PRD_USER,
     database: process.env.PRD_DB,
     password: process.env.PRD_PASSWORD,
-    ssl: true,
+    ssl: {
+      rejectUnauthorized: false
+    }
   }); // instance of client for use on connection
 
   // console.log('Return of db...',{
