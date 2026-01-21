@@ -7,7 +7,7 @@ async function query(queryObject) {
     user: process.env.PRD_USER,
     database: process.env.PRD_DB,
     password: process.env.PRD_PASSWORD,
-    ssl: process.env.NODE_ENV !== 'development',
+    ssl: getSSLConfig()
   });
 
   try {
@@ -23,4 +23,13 @@ async function query(queryObject) {
 
 export default {
   query: query
+}
+
+function getSSLConfig() {
+  if( process.env.POSTGRES_CA) {
+    return {
+      ca: process.env.POSTGRES_CA
+    }
+  }
+  return !process.env.NODE_ENV;
 }
