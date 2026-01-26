@@ -8,7 +8,6 @@ async function status(request, response) {
   const usedConnections = await database.query("SELECT COUNT(*)::int FROM pg_stat_activity;");
 
   const dbName = process.env.DB_NAME;
-  // Sanitization Query
   const getConnections = await database.query({
     text: "SELECT COUNT(*)::int FROM pg_stat_activity WHERE datname = $1",
     values: [dbName]
