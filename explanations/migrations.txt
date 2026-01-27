@@ -2,3 +2,9 @@ Why exists migrations ?!
 
 Migrations exist to help manage changes to the database structure over time. 
 As an application changes, the database tables or columns might need to be added, removed, or updated.
+ 
+There are two ways to use migrations:
+
+Order: The order in which migration scripts are executed matters. Migrations are typically run sequentially based on their timestamp or version number, ensuring that database changes are applied in the correct sequence. This prevents conflicts and ensures that dependent changes are applied in the right order.
+
+Alter: Alterations refer to modifying existing database structures (tables, columns, constraints, etc.) rather than creating new ones or dropping them entirely. Alter operations allow you to change column types, add or remove columns, modify constraints, and update indexes without losing existing data.
