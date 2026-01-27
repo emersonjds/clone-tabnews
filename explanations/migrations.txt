@@ -1,0 +1,4 @@
+Why exists migrations ?! 
+
+Migrations exist to help manage changes to the database structure over time. 
+As an application changes, the database tables or columns might need to be added, removed, or updated.
