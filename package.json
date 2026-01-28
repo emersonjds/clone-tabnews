@@ -13,7 +13,9 @@
     "build": "next build",
     "test": "NODE_OPTIONS=--experimental-vm-modules jest",
     "test:watch": "jest --watchAll",
-    "migrate:create": "node-pg-migrate --migrations-dir infra/migrations create"
+    "migrate:create": "node-pg-migrate --migrations-dir infra/migrations create",
+    "migrate:up": "node-pg-migrate --migrations-dir infra/migrations up",
+    "migrate:down": "node-pg-migrate --migrations-dir infra/migrations down"
   },
   "keywords": [
     "tabnews",
