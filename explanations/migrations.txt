@@ -15,3 +15,24 @@ Alter: Alterations refer to modifying existing database structures (tables,
 columns, constraints, etc.) rather than creating new ones or dropping them
 entirely. Alter operations allow you to change column types, add or remove
 columns, modify constraints, and update indexes without losing existing data.
+
+---
+
+how it works a migration file 
+
+Inside the file exists 3 scripts
+
+A migration file, like `1769567853472_first-file.js`, typically follows this structure:
+
+1. `exports.shorthands`: Optionally defines shorthand definitions for repeated column/property types you want to use throughout your migrations. In this file, it's set to `undefined`, meaning no shorthands are used.
+
+2. `exports.up = pgm => { ... }`: This is the function that applies the migration. It receives a `pgm` object (the migration builder) to modify the database schema, such as creating tables or columns. In this example, it's currently empty (`{}`), meaning this migration doesn't perform any schema changes yet.
+
+3. `exports.down = pgm => { ... }`: This is the rollback function. It defines how to undo the changes applied in the `up` function. It also receives the `pgm` object and is used to reverse the migration steps. This is important for safely rolling back if needed. Here, it's also empty.
+
+In summary, each migration file provides `up` and `down` methods so you can move the database schema forward and backward in a controlled, repeatable way.
+
+In command up we put commands to apply the desired changes to the database schema, such as creating tables, adding columns, or modifying indexes.
+
+In command down we put the commands needed to reverse the changes made in the `up` function. This might include dropping tables or columns that were added, or reverting any modifications, to restore the database to its prior state. This ensures that you can safely roll back a migration if something goes wrong or if you need to undo changes.
+
