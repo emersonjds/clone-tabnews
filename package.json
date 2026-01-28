@@ -14,8 +14,8 @@
     "test": "NODE_OPTIONS=--experimental-vm-modules jest",
     "test:watch": "jest --watchAll",
     "migrate:create": "node-pg-migrate --migrations-dir infra/migrations create",
-    "migrate:up": "node-pg-migrate --migrations-dir infra/migrations up",
-    "migrate:down": "node-pg-migrate --migrations-dir infra/migrations down"
+    "migrate:up": "node-pg-migrate --migrations-dir infra/migrations --envPath .env.development up",
+    "migrate:down": "node-pg-migrate --migrations-dir infra/migrations --envPath .env.development down"
   },
   "keywords": [
     "tabnews",
@@ -31,7 +31,7 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "dotenv": "^17.2.3",
+    "dotenv": "16.4.4",
     "jest": "^30.2.0",
     "prettier": "^3.7.4"
   }
