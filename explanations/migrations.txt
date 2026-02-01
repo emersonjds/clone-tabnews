@@ -36,6 +36,8 @@ In command up we put commands to apply the desired changes to the database schem
 
 In command down we put the commands needed to reverse the changes made in the `up` function. This might include dropping tables or columns that were added, or reverting any modifications, to restore the database to its prior state. This ensures that you can safely roll back a migration if something goes wrong or if you need to undo changes.
 
+---
+
 Dry Run vs. Live Run in Migrations
 
 When managing migrations, it's important to understand the concepts of Dry Run and Live Run:
