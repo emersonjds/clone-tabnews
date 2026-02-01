@@ -1,4 +1,4 @@
-import {Client} from "pg";
+import { Client } from "pg";
 
 async function query(queryObject) {
   // const client = new Client({
@@ -15,14 +15,14 @@ async function query(queryObject) {
     port: process.env.POSTGRES_PORT,
     user: process.env.POSTGRES_USER,
     database: process.env.POSTGRES_DB,
-    password: process.env.POSTGRES_PASSWORD
+    password: process.env.POSTGRES_PASSWORD,
   });
 
   try {
     await client.connect();
     return await client.query(queryObject);
   } catch (error) {
-    console.error('Database query error:', error.message);
+    console.error("Database query error:", error.message);
     throw error;
   } finally {
     await client.end();
@@ -30,14 +30,14 @@ async function query(queryObject) {
 }
 
 export default {
-  query: query
-}
+  query: query,
+};
 
 function getSSLConfig() {
-  if( process.env.POSTGRES_CA) {
+  if (process.env.POSTGRES_CA) {
     return {
-      ca: process.env.POSTGRES_CA
-    }
+      ca: process.env.POSTGRES_CA,
+    };
   }
   return !process.env.NODE_ENV;
 }
