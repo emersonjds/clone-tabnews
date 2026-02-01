@@ -36,3 +36,22 @@ In command up we put commands to apply the desired changes to the database schem
 
 In command down we put the commands needed to reverse the changes made in the `up` function. This might include dropping tables or columns that were added, or reverting any modifications, to restore the database to its prior state. This ensures that you can safely roll back a migration if something goes wrong or if you need to undo changes.
 
+Dry Run vs. Live Run in Migrations
+
+When managing migrations, it's important to understand the concepts of Dry Run and Live Run:
+
+Dry Run: 
+A Dry Run in the context of migrations is a way to simulate the execution of migration scripts without actually applying any changes to the database. During a dry run, the migration tool goes through all the steps it would normally perform (such as creating tables, altering columns, etc.), but stops short of executing them on the real database. Instead, it typically outputs the SQL statements it would run or logs what actions would have been taken.
+
+The primary purposes of a dry run are:
+
+1. **Safety Check**: Ensure that the migration scripts do not have unintended consequences before making any real changes.
+2. **Review**: Allow developers to review the generated SQL and verify that it matches their expectations.
+3. **Debugging**: Identify potential problems (such as syntax errors or logic flaws) before they affect the database.
+
+In essence, a dry run gives you a preview of what would happen, reducing the risk of errors or accidental data loss.
+
+Live Run:
+A Live Run executes the migration scripts against the target database, making permanent schema or data changes as defined in the migration files. This is the actual application of the migration, where tables are created, altered, or dropped as specified.
+
+You typically perform a Dry Run first to validate your changes, and once confident, execute a Live Run to apply the migrations to the database.
