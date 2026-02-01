@@ -6,7 +6,7 @@ export default async function migrations(request, response) {
   const migrations = await migrationRunner({
     databaseUrl: process.env.DATABASE_URL,
     direction: "up",
-    directory:join("infra", "migrations"),
+    dir:join("infra", "migrations"),
     dryRun: true,
     verbose: true,
   });
