@@ -14,6 +14,7 @@ export default async function migrations(request, response) {
     });
     return response.status(200).json(migrations);
   } 
+  
   if (request.method === "GET")  {
     const migrations = await migrationRunner({
       databaseUrl: process.env.DATABASE_URL,
