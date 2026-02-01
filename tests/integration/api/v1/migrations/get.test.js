@@ -4,6 +4,7 @@ test("Should return status 200 on GET /api/v1/migrations", async () => {
   expect(response.status).toBe(200);
 
   const responseBody = await response.json();
+  console.log(responseBody);
 
   expect(Array.isArray(responseBody)).toBe(true);
 });
