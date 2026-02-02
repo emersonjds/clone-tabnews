@@ -27,7 +27,7 @@ export default async function migrations(request, response) {
     return response.status(200).json(migrations);
   }
 
-  console.log(migrations);
+  // console.log(migrations);
   return response.status(405).end();
   // return response.status(200).json(migrations);
 }
