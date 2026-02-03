@@ -14,7 +14,3 @@ test("Should return status 200 on GET /api/v1/status", async () => {
   expect(responseBody.max_connections).toBeGreaterThan(1);
   expect(responseBody.used_connections).toBeGreaterThanOrEqual(1);
 });
-
-
-
-
