@@ -1,0 +1,6 @@
+Jest is a popular JavaScript testing framework, and the `--runInBand` flag tells Jest to run test files serially in the current process, instead of creating separate child processes for each test file. This is useful for debugging, limited system resources, or when tests interfere with each other due to shared state.
+
+### How `runInBand` Works
+
+When you use `--runInBand`, Jest runs one test suite at a time instead of spawning parallel worker 
+processes. This means:

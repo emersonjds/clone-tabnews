@@ -11,8 +11,8 @@
     "lint:check": "prettier --check .",
     "lint:fix": "prettier --write .",
     "build": "next build",
-    "test": "NODE_OPTIONS=--experimental-vm-modules jest",
-    "test:watch": "jest --watchAll",
+    "test": "jest --runInBand ",
+    "test:watch": "jest --runInBand --watchAll",
     "migrate:create": "node-pg-migrate --migrations-dir infra/migrations create",
     "migrate:up": "node-pg-migrate --migrations-dir infra/migrations --envPath .env.development up",
     "migrate:down": "node-pg-migrate --migrations-dir infra/migrations --envPath .env.development down"
