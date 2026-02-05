@@ -4,28 +4,26 @@ import { join } from "node:path";
 export default async function migrations(request, response) {
   const migrationsDir = join(process.cwd(), "infra", "migrations");
 
+  const defaultMigration = {
+    databaseUrl: process.env.DATABASE_URL,
+    direction: "up",
+    dir: migrationsDir,
+    dryRun: false,
+    verbose: true,
+    migrationsTable: "pgmigrations",
+  };
+
   if (request.method === "POST") {
-    const migrations = await migrationRunner({
-      databaseUrl: process.env.DATABASE_URL,
-      direction: "up",
-      dir: migrationsDir,
-      dryRun: false,
-      verbose: true,
-      migrationsTable: "pgmigrations",
-    });
-    return response.status(200).json(migrations);
+    const pendingMigrations = await migrationRunner(defaultMigration);
+    return response.status(201).json(pendingMigrations);
   } 
   
   if (request.method === "GET") {
-    const migrations = await migrationRunner({
-      databaseUrl: process.env.DATABASE_URL,
-      direction: "up",
-      dir: migrationsDir,
+    const resultedMigrations = await migrationRunner({
+      ...defaultMigration,
       dryRun: true,
-      verbose: true,
-      migrationsTable: "pgmigrations",
     });
-    return response.status(200).json(migrations);
+    return response.status(200).json(resultedMigrations);
   }
 
   // console.log(migrations);
