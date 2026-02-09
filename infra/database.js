@@ -10,15 +10,17 @@ async function query(queryObject) {
   //   ssl: getSSLConfig()
   // });
 
-  const client = new Client({
-    host: process.env.POSTGRES_HOST,
-    port: process.env.POSTGRES_PORT,
-    user: process.env.POSTGRES_USER,
-    database: process.env.POSTGRES_DB,
-    password: process.env.POSTGRES_PASSWORD,
-  });
+  // const client = new Client({
+  //   host: process.env.POSTGRES_HOST,
+  //   port: process.env.POSTGRES_PORT,
+  //   user: process.env.POSTGRES_USER,
+  //   database: process.env.POSTGRES_DB,
+  //   password: process.env.POSTGRES_PASSWORD,
+  // });
 
+  let client;
   try {
+    client = await getNewClient();
     await client.connect();
     return await client.query(queryObject);
   } catch (error) {
@@ -28,6 +30,18 @@ async function query(queryObject) {
     await client.end();
   }
 }
+
+const getNewClient = async () => {
+  const client = new Client({
+    host: process.env.POSTGRES_HOST,
+    port: process.env.POSTGRES_PORT,
+    user: process.env.POSTGRES_USER,
+    database: process.env.POSTGRES_DB,
+    password: process.env.POSTGRES_PASSWORD,
+  });
+  await client.connect();
+  return client;
+};
 
 export default {
   query: query,
