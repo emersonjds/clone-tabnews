@@ -6,7 +6,6 @@
 # .DS_Store
 # bun.lockb
 # *.log
-
 node_modules/
 .next/
 dist/
