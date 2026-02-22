@@ -7,6 +7,11 @@ export default async function migrations(request, response) {
   const migrationsDir = join(process.cwd(), "infra", "migrations");
   const dbClient = await database.getNewClient();
 
+  const methodsAllowed = ["GET", "POST"];
+  if (!methodsAllowed.includes(request.method)) {
+    return response.status(405).json({ error: `Method ${request.method} Not Allowed` });
+  }
+
   try {
     const defaultMigration = {
       dbClient: dbClient,
