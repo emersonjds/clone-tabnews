@@ -11,8 +11,10 @@ export default async function migrations(request, response) {
       .json({ error: `Method ${request.method} Not Allowed` });
   }
 
+  let dbClient;
+
   try {
-    const dbClient = await database.getNewClient();
+    dbClient = await database.getNewClient();
 
     const defaultMigration = {
       dbClient: dbClient,
@@ -36,8 +38,9 @@ export default async function migrations(request, response) {
     }
     return response.status(405).end();
   } catch (error) {
+    console.error("Error running migrations:", error);
     throw error;
   } finally {
-    await database.closeConnection();
+    await dbClient.end();
   }
 }
