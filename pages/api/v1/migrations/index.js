@@ -3,20 +3,19 @@ import { join } from "node:path";
 import database from "infra/database.js";
 
 export default async function migrations(request, response) {
-
-  const migrationsDir = join(process.cwd(), "infra", "migrations");
-  const dbClient = await database.getNewClient();
-
   const methodsAllowed = ["GET", "POST"];
+
   if (!methodsAllowed.includes(request.method)) {
     return response.status(405).json({ error: `Method ${request.method} Not Allowed` });
   }
+
+  const dbClient = await database.getNewClient();
 
   try {
     const defaultMigration = {
       dbClient: dbClient,
       direction: "up",
-      dir: migrationsDir,
+      dir: join("infra", "migrations"),
       dryRun: false,
       verbose: true,
       migrationsTable: "pgmigrations",
