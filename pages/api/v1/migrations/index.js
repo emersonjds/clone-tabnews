@@ -39,7 +39,9 @@ export default async function migrations(request, response) {
     }
 
   } catch (error) {
+
     console.error("Error running migrations:", error);
+
     throw error;
   } finally {
     await dbClient.end();
