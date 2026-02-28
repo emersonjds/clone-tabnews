@@ -1,0 +1,5 @@
+In MVC this is the flow
+
+Controller -> Model -> Controller -> View 
+
+When we have a controller we dont need intanciate a new connection in index.js this it's responsable of infra for example

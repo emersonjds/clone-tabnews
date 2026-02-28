@@ -1,0 +1,10 @@
+When work with databases and we neet to get informations about things that happen on db we can use 
+
+pg_stat_activity, this query get a lot of data in real time against the db
+
+When use that query we need to specify datname, this is the name of db when we connect in postgres
+
+We can use other query
+
+pg_stat_database, this query get data from db
+

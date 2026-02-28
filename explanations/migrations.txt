@@ -1,0 +1,59 @@
+Why exists migrations ?! 
+
+Migrations exist to help manage changes to the database structure over time. 
+As an application changes, the database tables or columns might need to be added, removed, or updated.
+ 
+There are two ways to use migrations:
+
+Order: The order in which migration scripts are executed matters. Migrations
+are typically run sequentially based on their timestamp or version number,
+ensuring that database changes are applied in the correct sequence. This
+prevents conflicts and ensures that dependent changes are applied in the
+right order.
+
+Alter: Alterations refer to modifying existing database structures (tables,
+columns, constraints, etc.) rather than creating new ones or dropping them
+entirely. Alter operations allow you to change column types, add or remove
+columns, modify constraints, and update indexes without losing existing data.
+
+---
+
+how it works a migration file 
+
+Inside the file exists 3 scripts
+
+A migration file, like `1769567853472_first-file.js`, typically follows this structure:
+
+1. `exports.shorthands`: Optionally defines shorthand definitions for repeated column/property types you want to use throughout your migrations. In this file, it's set to `undefined`, meaning no shorthands are used.
+
+2. `exports.up = pgm => { ... }`: This is the function that applies the migration. It receives a `pgm` object (the migration builder) to modify the database schema, such as creating tables or columns. In this example, it's currently empty (`{}`), meaning this migration doesn't perform any schema changes yet.
+
+3. `exports.down = pgm => { ... }`: This is the rollback function. It defines how to undo the changes applied in the `up` function. It also receives the `pgm` object and is used to reverse the migration steps. This is important for safely rolling back if needed. Here, it's also empty.
+
+In summary, each migration file provides `up` and `down` methods so you can move the database schema forward and backward in a controlled, repeatable way.
+
+In command up we put commands to apply the desired changes to the database schema, such as creating tables, adding columns, or modifying indexes.
+
+In command down we put the commands needed to reverse the changes made in the `up` function. This might include dropping tables or columns that were added, or reverting any modifications, to restore the database to its prior state. This ensures that you can safely roll back a migration if something goes wrong or if you need to undo changes.
+
+---
+
+Dry Run vs. Live Run in Migrations
+
+When managing migrations, it's important to understand the concepts of Dry Run and Live Run:
+
+Dry Run: 
+A Dry Run in the context of migrations is a way to simulate the execution of migration scripts without actually applying any changes to the database. During a dry run, the migration tool goes through all the steps it would normally perform (such as creating tables, altering columns, etc.), but stops short of executing them on the real database. Instead, it typically outputs the SQL statements it would run or logs what actions would have been taken.
+
+The primary purposes of a dry run are:
+
+1. **Safety Check**: Ensure that the migration scripts do not have unintended consequences before making any real changes.
+2. **Review**: Allow developers to review the generated SQL and verify that it matches their expectations.
+3. **Debugging**: Identify potential problems (such as syntax errors or logic flaws) before they affect the database.
+
+In essence, a dry run gives you a preview of what would happen, reducing the risk of errors or accidental data loss.
+
+Live Run:
+A Live Run executes the migration scripts against the target database, making permanent schema or data changes as defined in the migration files. This is the actual application of the migration, where tables are created, altered, or dropped as specified.
+
+You typically perform a Dry Run first to validate your changes, and once confident, execute a Live Run to apply the migrations to the database.

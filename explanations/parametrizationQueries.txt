@@ -1,0 +1,35 @@
+We need to talk about parametrization queries.
+
+This occurs when we have a query that depends on a parameter.
+
+For example:
+
+SELECT * FROM table WHERE id = ?
+
+Simulate SQL Injections
+
+// const getConnections = await database.query("SELECT * FROM" + " pg_stat_activity WHERE datname='postgres';");
+
+  //second situation
+  // "SELECT count(*)::int FROM pg_stat_activity WHERE datname = '';"
+
+  //third situation
+  // "SELECT count(*)::int FROM pg_stat_activity WHERE datname = '';';"
+
+  //four situation
+  // "SELECT count(*)::int FROM pg_stat_activity WHERE datname = '';SELECT pg_sleep(4);';"
+
+  //Fifth situation
+  // "SELECT count(*)::int FROM pg_stat_activity WHERE datname = '';SELECT pg_sleep(4);--;"`
+
+  All of this examples using query parameters against the database.
+
+  test("Test of SQL Injection", async () => {
+    await fetch("http://localhost:3000/api/v1/status?dbName=postgres");
+    await fetch("http://localhost:3000/api/v1/status?dbName=");
+    await fetch("http://localhost:3000/api/v1/status?dbName='; ");
+    await fetch("http://localhost:3000/api/v1/status?dbName='; SELECT pg_sleep(4);");
+    // ignore other commands --
+    await fetch("http://localhost:3000/api/v1/status?dbName='; SELECT pg_sleep(4);--");
+  });
+
