@@ -1,3 +1,1 @@
-export default function cloneTabnews() {
-  return null;
-}
+export default function cloneTabnews() {}
